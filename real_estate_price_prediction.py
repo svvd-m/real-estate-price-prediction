@@ -1,105 +1,124 @@
-# Required Libraries
-import os
+# Install dependencies if needed
+!pip install --upgrade scikit-learn xgboost lightgbm shap
+
+# Import required libraries
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import shap
 
-# Machine Learning Libraries
+# Sklearn modules
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler, PowerTransformer
+
+# XGBoost & LightGBM
 from xgboost import XGBRegressor
 from lightgbm import LGBMRegressor
 
-# Define the file path for the dataset (stored in the same directory as the script)
+# Load dataset (Ensure DATA2.csv is in the GitHub repository)
 file_path = "DATA2.csv"
-
-# Ensure the dataset is present before proceeding
-if not os.path.exists(file_path):
-    raise FileNotFoundError(f"ERROR: Dataset file '{file_path}' not found. Please make sure it is in the repository.")
-
-# Load dataset
 df = pd.read_csv(file_path)
 
-# Display initial dataset information
-print("Dataset loaded successfully!")
-print(df.head(10))
+print("Dataset successfully loaded.")
+display(df.head(10))
+
+# Basic Data Overview
+print("\nDataset Information:")
 df.info()
 
-# Check for missing values in the dataset
 print("\nMissing Values:")
-print(df.isnull().sum())
+display(df.isnull().sum())
 
-# Initial price distribution analysis
+# Check the distribution of 'Price'
 print(f"Initial Skewness: {df['Price'].skew():.3f}, Kurtosis: {df['Price'].kurtosis():.3f}")
 
-# Visualizing original price distribution
+# Visualize price distribution
 plt.figure(figsize=(7,4))
 sns.histplot(df['Price'], bins=50, kde=True)
 plt.title("Original Price Distribution")
 plt.show()
 
-# Price Transformations for Normalization
 from scipy.stats import boxcox
 
+# Transformations to reduce skewness
 df['Log_Price'] = np.log1p(df['Price'])  # Log transformation
 df['SQRT_Price'] = np.sqrt(df['Price'])  # Square root transformation
-df['BoxCox_Price'], _ = boxcox(df['Price'] + 1)  # Box-Cox transformation (requires positive values)
 
-# Yeo-Johnson transformation
+# Box-Cox transformation (requires positive values)
+df['BoxCox_Price'], _ = boxcox(df['Price'] + 1)  # Adding 1 to avoid zero-values issue
+
+# Yeo-Johnson transformation (handles zero & negative values)
 yj_transformer = PowerTransformer(method='yeo-johnson')
 df['YeoJohnson_Price'] = yj_transformer.fit_transform(df[['Price']])
 
-# Comparing transformations
-print("\nSkewness & Kurtosis After Transformations:")
-for col in ['Log_Price', 'SQRT_Price', 'BoxCox_Price', 'YeoJohnson_Price']:
-    print(f"{col}: Skewness={df[col].skew():.3f}, Kurtosis={df[col].kurtosis():.3f}")
+# Compare distributions visually
+fig, axes = plt.subplots(2, 2, figsize=(12,10))
+sns.histplot(df['Log_Price'], bins=50, kde=True, ax=axes[0,0])
+axes[0,0].set_title("Log Price Distribution")
 
-# Selecting the most suitable transformation
+sns.histplot(df['SQRT_Price'], bins=50, kde=True, ax=axes[0,1])
+axes[0,1].set_title("Square Root Price Distribution")
+
+sns.histplot(df['BoxCox_Price'], bins=50, kde=True, ax=axes[1,0])
+axes[1,0].set_title("Box-Cox Price Distribution")
+
+sns.histplot(df['YeoJohnson_Price'], bins=50, kde=True, ax=axes[1,1])
+axes[1,1].set_title("Yeo-Johnson Price Distribution")
+
+plt.show()
+
+# Use Yeo-Johnson transformation as it produces the most normal distribution
 df['Price'] = df['YeoJohnson_Price']
 df.drop(columns=['Log_Price', 'SQRT_Price', 'BoxCox_Price', 'YeoJohnson_Price'], inplace=True)
 
-print("\nUsing Yeo-Johnson Transformation for normalization.")
+print("\nApplied Yeo-Johnson transformation for normalization.")
 
-# Removing unnecessary columns
+# Drop unnecessary columns
 cols_to_drop = ['Sl no', 'Address', 'Method', 'SellerG', 'Date', 'Postcode', 'Bedroom2']
 df.drop(columns=[col for col in cols_to_drop if col in df.columns], inplace=True, errors='ignore')
 
-# Handling missing values
-num_cols = ['Distance', 'Bathroom', 'Car', 'Landsize', 'BuildingArea', 'YearBuilt', 'Lattitude', 'Longtitude', 'Propertycount']
+# Fill missing numeric values with median
+num_cols = ['Distance', 'Bathroom', 'Car', 'Landsize', 'BuildingArea', 'YearBuilt',
+            'Lattitude', 'Longtitude', 'Propertycount', 'YearSold', 'MonthSold', 'YearMonthSold']
+
 for col in num_cols:
     if col in df.columns:
         df[col].fillna(df[col].median(), inplace=True)
 
+# Fill missing categorical values with mode
 cat_cols = ['CouncilArea', 'Regionname', 'Type', 'Suburb']
 for col in cat_cols:
     if col in df.columns:
         df[col].fillna(df[col].mode()[0], inplace=True)
 
-print("\nData preprocessing complete.")
+print("\nData preprocessing completed.")
 
-# Splitting dataset into training and testing sets
+# Split dataset into features and target
 y = df['Price']
 X = df.drop('Price', axis=1)
+
+# Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 print(f"Train shape: {X_train.shape}, Test shape: {X_test.shape}")
 
-# One-Hot Encoding for categorical features
+# One-Hot Encode categorical variables
 X_train = pd.get_dummies(X_train, columns=cat_cols, drop_first=True)
 X_test = pd.get_dummies(X_test, columns=cat_cols, drop_first=True)
+
+# Align training and test sets
 X_train, X_test = X_train.align(X_test, join='left', axis=1, fill_value=0)
 
-# Standardizing features
+# Scale features
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-print("Encoding & Scaling complete.")
+print("Encoding and scaling completed.")
 
-# Defining models for comparison
+# Define models
 models = {
     "Linear Regression": LinearRegression(),
     "Random Forest": RandomForestRegressor(n_estimators=100, random_state=42),
@@ -107,7 +126,7 @@ models = {
     "LightGBM": LGBMRegressor(n_estimators=300, learning_rate=0.1, max_depth=7, random_state=42)
 }
 
-# Model evaluation function
+# Evaluate models
 def evaluate_model(model, X_train, y_train, X_test, y_test):
     model.fit(X_train, y_train)
     train_score = model.score(X_train, y_train)
@@ -116,42 +135,31 @@ def evaluate_model(model, X_train, y_train, X_test, y_test):
     rmse = np.sqrt(mean_squared_error(y_test, model.predict(X_test)))
     return train_score, test_score, mae, rmse
 
-# Evaluating models
+# Compare models
 model_results = {}
 for name, model in models.items():
     train_r2, test_r2, mae, rmse = evaluate_model(model, X_train_scaled, y_train, X_test_scaled, y_test)
     model_results[name] = [train_r2, test_r2, mae, rmse]
     print(f"{name}: Train R²: {train_r2:.3f}, Test R²: {test_r2:.3f}, MAE: {mae:.2f}, RMSE: {rmse:.2f}")
 
-# Saving models
-import joblib
-joblib.dump(models["XGBoost"], "xgboost_model.pkl")
-joblib.dump(models["LightGBM"], "lightgbm_model.pkl")
+# Convert results to DataFrame
+model_comparison_df = pd.DataFrame.from_dict(model_results, orient='index', columns=['Train R²', 'Test R²', 'MAE', 'RMSE'])
+print("\nModel Performance Comparison:")
+display(model_comparison_df)
 
-print("\nModels trained and saved.")
+# Feature importance analysis
+from sklearn.inspection import permutation_importance
+perm_importance_xgb = permutation_importance(models["XGBoost"], X_test_scaled, y_test, scoring="r2", n_repeats=5, random_state=42)
+xgb_feature_importance = pd.DataFrame({"Feature": X_train.columns, "Importance": perm_importance_xgb.importances_mean})
+xgb_feature_importance = xgb_feature_importance.sort_values(by="Importance", ascending=False)
 
-# SHAP Analysis
-explainer_xgb = shap.TreeExplainer(models["XGBoost"])
-shap_values_xgb = explainer_xgb.shap_values(X_test_scaled)
-shap.summary_plot(shap_values_xgb, X_test_scaled, feature_names=X_train.columns)
+print("\nXGBoost Feature Importance:")
+display(xgb_feature_importance.head(10))
 
-explainer_lgbm = shap.TreeExplainer(models["LightGBM"])
-shap_values_lgbm = explainer_lgbm.shap_values(X_test_scaled)
-shap.summary_plot(shap_values_lgbm, X_test_scaled, feature_names=X_train.columns)
-
-print("\nSHAP Analysis completed.")
-
-# Residuals plot
-residuals_xgb = y_test - models["XGBoost"].predict(X_test_scaled)
-plt.figure(figsize=(7,5))
-sns.histplot(residuals_xgb, bins=50, kde=True)
-plt.title("Residual Distribution - XGBoost")
-plt.show()
-
-residuals_lgbm = y_test - models["LightGBM"].predict(X_test_scaled)
-plt.figure(figsize=(7,5))
-sns.histplot(residuals_lgbm, bins=50, kde=True)
-plt.title("Residual Distribution - LightGBM")
-plt.show()
-
-print("\nScript execution complete.")
+# Compute VIF for multicollinearity
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+vif_data = pd.DataFrame()
+vif_data["Feature"] = X_train.columns
+vif_data["VIF"] = [variance_inflation_factor(X_train_scaled, i) for i in range(X_train_scaled.shape[1])]
+print("\nVIF Analysis (Features with High Multicollinearity):")
+display(vif_data[vif_data["VIF"] > 5])
