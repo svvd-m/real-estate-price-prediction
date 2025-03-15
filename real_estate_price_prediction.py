@@ -1,5 +1,5 @@
 # Install dependencies if needed
-!pip install --upgrade scikit-learn xgboost lightgbm shap
+#!pip install --upgrade scikit-learn xgboost lightgbm shap
 
 # Import required libraries
 import pandas as pd
