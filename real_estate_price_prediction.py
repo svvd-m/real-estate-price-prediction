@@ -118,38 +118,9 @@ X_test_scaled = scaler.transform(X_test)
 
 print("Encoding and scaling completed.")
 
-# Define models
-models = {
-    "Linear Regression": LinearRegression(),
-    "Random Forest": RandomForestRegressor(n_estimators=100, random_state=42),
-    "XGBoost": XGBRegressor(n_estimators=300, learning_rate=0.1, max_depth=7, random_state=42),
-    "LightGBM": LGBMRegressor(n_estimators=300, learning_rate=0.1, max_depth=7, random_state=42)
-}
-
-# Evaluate models
-def evaluate_model(model, X_train, y_train, X_test, y_test):
-    model.fit(X_train, y_train)
-    train_score = model.score(X_train, y_train)
-    test_score = model.score(X_test, y_test)
-    mae = mean_absolute_error(y_test, model.predict(X_test))
-    rmse = np.sqrt(mean_squared_error(y_test, model.predict(X_test)))
-    return train_score, test_score, mae, rmse
-
-# Compare models
-model_results = {}
-for name, model in models.items():
-    train_r2, test_r2, mae, rmse = evaluate_model(model, X_train_scaled, y_train, X_test_scaled, y_test)
-    model_results[name] = [train_r2, test_r2, mae, rmse]
-    print(f"{name}: Train R²: {train_r2:.3f}, Test R²: {test_r2:.3f}, MAE: {mae:.2f}, RMSE: {rmse:.2f}")
-
-# Convert results to DataFrame
-model_comparison_df = pd.DataFrame.from_dict(model_results, orient='index', columns=['Train R²', 'Test R²', 'MAE', 'RMSE'])
-print("\nModel Performance Comparison:")
-display(model_comparison_df)
-
 # Feature importance analysis
 from sklearn.inspection import permutation_importance
-perm_importance_xgb = permutation_importance(models["XGBoost"], X_test_scaled, y_test, scoring="r2", n_repeats=5, random_state=42)
+perm_importance_xgb = permutation_importance(XGBRegressor(), X_test_scaled, y_test, scoring="r2", n_repeats=5, random_state=42)
 xgb_feature_importance = pd.DataFrame({"Feature": X_train.columns, "Importance": perm_importance_xgb.importances_mean})
 xgb_feature_importance = xgb_feature_importance.sort_values(by="Importance", ascending=False)
 
