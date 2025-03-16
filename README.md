@@ -2,16 +2,16 @@
 
 ![Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction/blob/main/banner_image.png)
 
-This project predicts real estate prices using **machine learning algorithms**, specifically **XGBoost, LightGBM, Random Forest, and Linear Regression**. The model is trained on a dataset of real estate transactions and evaluates feature importance using **SHAP values and Permutation Importance**.  
+ This project predicts real estate prices using **machine learning algorithms**, specifically **XGBoost, LightGBM, Random Forest, and Linear Regression**. The model is trained on a dataset of real estate transactions and evaluates feature importance using **SHAP values and Permutation Importance**.  
 
 This repository contains:  
- A **Google Colab notebook** for running the project.  
- A **public dataset** (`DATA2.csv`) stored in GitHub for easy access.  
- A complete **machine learning pipeline** from data preprocessing to model evaluation.  
+- A **Google Colab notebook** for running the project.  
+- A **public dataset** (`DATA2.csv`) stored in GitHub for easy access.  
+- A complete **machine learning pipeline** from data preprocessing to model evaluation.  
 
 
 ##  **Project Overview**  
-Real estate price prediction is an important task for buyers, sellers, and real estate agents. This project applies **multiple machine learning models** to analyze housing prices and provides insights into the most significant features influencing property values.
+ Real estate price prediction is an important task for buyers, sellers, and real estate agents. This project applies **multiple machine learning models** to analyze housing prices and provides insights into the most significant features influencing property values.
 
 ### **Key Features**  
 - **Data Preprocessing**: Handling missing values, feature selection, and transformation.  
@@ -105,7 +105,7 @@ df = pd.read_csv(file_url)
 5️. **Property type (House/Apartment)**  
 
 ### **SHAP Summary Plot**  
-![](https://github.com/svvd-m/real-estate-price-prediction/blob/main/shap_summary_plot.png)  
+![](https://github.com/svvd-m/real-estate-price-prediction/blob/main/image.png)  
 
 
 ##  **How to Reproduce This Project Locally**  
