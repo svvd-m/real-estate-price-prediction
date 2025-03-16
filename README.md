@@ -1,6 +1,6 @@
 # Real Estate Price Prediction using Machine Learning 
 
-   ![Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction/blob/main/banner_image.png)
+![Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction/blob/main/banner_image.png)
 
  This project predicts real estate prices using **machine learning algorithms**, specifically **XGBoost, LightGBM, Random Forest, and Linear Regression**. The model is trained on a dataset of real estate transactions and evaluates feature importance using **SHAP values and Permutation Importance**.  
 
@@ -46,13 +46,13 @@ Try deep learning models (e.g., LSTMs, CNNs) for advanced price forecasting.
 Tune hyperparameters further using Bayesian Optimization.
 
 ##  Try It Now (No Installation Required)
- **Click Below to Open the Fully Functional Colab Notebook**  
+1. **Click Below to Open the Fully Functional Colab Notebook**  
  [Run in Google Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)  
 
- **Dataset Automatically Loaded from GitHub**  
+2. **Dataset Automatically Loaded from GitHub**  
 No manual downloads required. The dataset is fetched automatically in the notebook.
 
- **Just Run the Notebook!**  
+3. **Just Run the Notebook!**  
 Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict in minutes.
 
 ##  **Dataset Details**  
@@ -86,9 +86,9 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 | **XGBoost**         | 0.88  | 0.83  | 29,800 | 49,200 | **Best Overall Model** |
 | **LightGBM**        | 0.87  | 0.82  | 30,500 | 50,300 | Fast and scalable |
 
- **XGBoost performed the best**, making it the ideal model for **real estate price predictions**.  
- **Random Forest** works well but takes longer to train.  
- **Linear Regression** is too simple and lacks accuracy for real-world applications.  
+- **XGBoost performed the best**, making it the ideal model for **real estate price predictions**.  
+- **Random Forest** works well but takes longer to train.  
+- **Linear Regression** is too simple and lacks accuracy for real-world applications.  
 
 
 ##  **Feature Importance Analysis**  
@@ -100,6 +100,7 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 5️. **Property type (House/Apartment)**  
 
 ### **SHAP Summary Plot**  
+
 ![](https://github.com/svvd-m/real-estate-price-prediction/blob/main/image.png)  
 
 
@@ -115,22 +116,22 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 3. **Run the notebook locally** using Jupyter Notebook or Google Colab.
 
 ##  How This Project Demonstrates My Skills
- **Data Science & Machine Learning**: Full ML pipeline including preprocessing, feature engineering, and model evaluation.  
- **Model Optimization**: Hyperparameter tuning with GridSearchCV for best performance.  
- **Business & Domain Knowledge**: Applied ML to real estate pricing, making data-driven decisions.  
- **Python & Libraries**: Used Pandas, Scikit-Learn, XGBoost, LightGBM, and SHAP for feature analysis.  
+- **Data Science & Machine Learning**: Full ML pipeline including preprocessing, feature engineering, and model evaluation.  
+- **Model Optimization**: Hyperparameter tuning with GridSearchCV for best performance.  
+- **Business & Domain Knowledge**: Applied ML to real estate pricing, making data-driven decisions.  
+- **Python & Libraries**: Used Pandas, Scikit-Learn, XGBoost, LightGBM, and SHAP for feature analysis.  
 
 ##  Next Steps & Future Improvements
- **Build a Web App** – Create an interactive Gradio UI for instant property price predictions.  
- **Deploy on Hugging Face Spaces** – Make the model publicly available for easy testing.  
- **Expand Dataset** – Include additional features like interest rates, crime rates, and school quality.  
+- **Build a Web App** – Create an interactive Gradio UI for instant property price predictions.  
+- **Deploy on Hugging Face Spaces** – Make the model publicly available for easy testing.  
+- **Expand Dataset** – Include additional features like interest rates, crime rates, and school quality.  
 
 ##  **License**  
 This project is open-source under the **MIT License**.
 
 
 ##  **Links**    
- **GitHub Repo**: [Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction)  
- **Colab Notebook**: [Run in Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)  
+- **GitHub Repo**: [Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction)  
+- **Colab Notebook**: [Run in Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)  
   
 
