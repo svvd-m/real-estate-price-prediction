@@ -12,43 +12,43 @@ This repository contains:
 Real estate price prediction is an important task for buyers, sellers, and real estate agents. This project applies **multiple machine learning models** to analyze housing prices and provides insights into the most significant features influencing property values.
 
 ### **Key Features**  
-✔ **Data Preprocessing**: Handling missing values, feature selection, and transformation.  
-✔ **Feature Engineering**: Normalization using Yeo-Johnson transformation to reduce skewness.  
-✔ **Model Training**: Comparing different regression models to find the best predictor.  
-✔ **Feature Importance**: Analyzing key factors affecting house prices using SHAP values.  
-✔ **Hyperparameter Tuning**: Optimizing model performance using GridSearchCV.  
+- **Data Preprocessing**: Handling missing values, feature selection, and transformation.  
+- **Feature Engineering**: Normalization using Yeo-Johnson transformation to reduce skewness.  
+- **Model Training**: Comparing different regression models to find the best predictor.  
+- **Feature Importance**: Analyzing key factors affecting house prices using SHAP values.  
+- **Hyperparameter Tuning**: Optimizing model performance using GridSearchCV.  
 
 ### Real-World Applications
-✔ For Real Estate Agents:
+- For Real Estate Agents:
 Set competitive listing prices based on property features.
 Identify undervalued properties for quick investment opportunities.
 
-✔ For Home Buyers & Sellers:
+- For Home Buyers & Sellers:
 Estimate the fair price of a home before buying/selling.
 Compare different properties based on features.
 
-✔ For Investors & Financial Analysts:
+- For Investors & Financial Analysts:
 Predict housing market trends based on historical data.
 Optimize real estate portfolios by analyzing location-based pricing trends.
 
 ### Future Improvements
-✔ Deploy as a Web App
+- Deploy as a Web App
 A Gradio-based UI (coming soon) will allow users to enter property details and get instant price predictions.
 
-✔ Improve Data & Features
+- Improve Data & Features
 Integrate real-time real estate market data for more accurate predictions.
 Add economic indicators (interest rates, inflation, etc.).
 
-✔ Enhance Model Performance
+- Enhance Model Performance
 Try deep learning models (e.g., LSTMs, CNNs) for advanced price forecasting.
 Tune hyperparameters further using Bayesian Optimization.
 
 ##  **Run the Project in Google Colab**  
-### ** Step 1: Open the Colab Notebook**  
+### Step 1: Open the Colab Notebook  
 Click the link below to open the project in **Google Colab**:  
  **[Run in Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)**  
 
-### ** Step 2: Load the Dataset**  
+### Step 2: Load the Dataset  
 The dataset is stored in **this GitHub repository**.  
 In the Colab notebook, the dataset is automatically fetched using the following code:  
 
@@ -58,7 +58,7 @@ file_url = "https://raw.githubusercontent.com/svvd-m/real-estate-price-predictio
 df = pd.read_csv(file_url)
 ```
 
-### ** Step 3: Run the Notebook**  
+### Step 3: Run the Notebook  
 1. Click **"Runtime"** → **"Run all"** in Google Colab.  
 2. The models will train, evaluate, and visualize results automatically.  
 
@@ -76,7 +76,7 @@ df = pd.read_csv(file_url)
   - **And many more...**  
 
 
-## 🛠 **Technologies Used**  
+## **Technologies Used**  
 - **Python**   
 - **Google Colab**   
 - **Pandas, NumPy, Matplotlib, Seaborn** (Data processing & visualization)  
@@ -96,11 +96,11 @@ df = pd.read_csv(file_url)
 
 ##  **Feature Importance Analysis**  
 **SHAP Values** were used to interpret feature importance. The top **5 most influential features** in predicting house prices were:  
-1️ **Distance from city center**  
-2️ **Building area**  
-3️ **Number of bedrooms**  
-4️ **Land size**  
-5️ **Property type (House/Apartment)**  
+1️. **Distance from city center**  
+2️. **Building area**  
+3️. **Number of bedrooms**  
+4️. **Land size**  
+5️. **Property type (House/Apartment)**  
 
 ### **SHAP Summary Plot**  
 ![](https://github.com/svvd-m/real-estate-price-prediction/blob/main/shap_summary_plot.png)  
