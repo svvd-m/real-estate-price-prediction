@@ -1,4 +1,4 @@
-# **Real Estate Price Prediction using Machine Learning **  
+# Real Estate Price Prediction using Machine Learning 
 
 This project predicts real estate prices using **machine learning algorithms**, specifically **XGBoost, LightGBM, Random Forest, and Linear Regression**. The model is trained on a dataset of real estate transactions and evaluates feature importance using **SHAP values and Permutation Importance**.  
 
