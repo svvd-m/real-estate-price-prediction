@@ -18,9 +18,32 @@ Real estate price prediction is an important task for buyers, sellers, and real 
 ✔ **Feature Importance**: Analyzing key factors affecting house prices using SHAP values.  
 ✔ **Hyperparameter Tuning**: Optimizing model performance using GridSearchCV.  
 
+### Real-World Applications
+✔ For Real Estate Agents:
+Set competitive listing prices based on property features.
+Identify undervalued properties for quick investment opportunities.
+
+✔ For Home Buyers & Sellers:
+Estimate the fair price of a home before buying/selling.
+Compare different properties based on features.
+
+✔ For Investors & Financial Analysts:
+Predict housing market trends based on historical data.
+Optimize real estate portfolios by analyzing location-based pricing trends.
+
+### Future Improvements
+✔ Deploy as a Web App
+A Gradio-based UI (coming soon) will allow users to enter property details and get instant price predictions.
+
+✔ Improve Data & Features
+Integrate real-time real estate market data for more accurate predictions.
+Add economic indicators (interest rates, inflation, etc.).
+
+✔ Enhance Model Performance
+Try deep learning models (e.g., LSTMs, CNNs) for advanced price forecasting.
+Tune hyperparameters further using Bayesian Optimization.
 
 ##  **Run the Project in Google Colab**  
-
 ### ** Step 1: Open the Colab Notebook**  
 Click the link below to open the project in **Google Colab**:  
  **[Run in Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)**  
