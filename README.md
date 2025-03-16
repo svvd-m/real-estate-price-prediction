@@ -8,6 +8,9 @@ This project predicts real estate prices using **XGBoost, LightGBM, and Random F
 - Trains **multiple models** and selects the best one.
 - Provides **SHAP and permutation importance** for explainability.
 
+## 🖥 Try It Online:
+[![Open In Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)
+
 ##  How to Run:
 1. **Clone the Repository**  
    ```bash
