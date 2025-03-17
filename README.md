@@ -57,7 +57,7 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 
 ##  **Dataset Details**  
 - **File Name:** `DATA2.csv`  
-- **Source:** [Real estate transaction data](https://www.kaggle.com/code/zeesolver/melbourne-housing-price-model)  
+- **Source:** [Melbourne Housing Market](https://www.kaggle.com/datasets/anthonypino/melbourne-housing-market)  
 - **Target Variable:** `Price` (House sale price)  
 - **Features Include:**  
   - `Distance`: Distance from city center  
@@ -93,11 +93,11 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 
 ##  **Feature Importance Analysis**  
 **SHAP Values** were used to interpret feature importance. The top **5 most influential features** in predicting house prices were:  
-1️. **Distance from city center**  
-2️. **Building area**  
-3️. **Number of bedrooms**  
-4️. **Land size**  
-5️. **Property type (House/Apartment)**  
+1️. **Property Type**  
+2️. **Region name**  
+3️. **Distance from city center**  
+4️. **Rooms**  
+5️. **Landsize**  
 
 ### **SHAP Summary Plot**  
 
