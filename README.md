@@ -57,7 +57,7 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 
 ##  **Dataset Details**  
 - **File Name:** `DATA2.csv`  
-- **Source:** Real estate transaction data  
+- **Source:** [Real estate transaction data](https://www.kaggle.com/code/zeesolver/melbourne-housing-price-model)  
 - **Target Variable:** `Price` (House sale price)  
 - **Features Include:**  
   - `Distance`: Distance from city center  
