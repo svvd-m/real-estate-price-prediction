@@ -101,7 +101,7 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 
 ### **SHAP Summary Plot**  
 
-![](https://github.com/svvd-m/real-estate-price-prediction/blob/main/image.png)  
+![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/40ba54a14ce1d04aa50992ace78cf48c1c061878/image.png)
 
 
 ##  **How to Reproduce This Project Locally**  
