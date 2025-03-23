@@ -126,9 +126,6 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 - **Deploy on Hugging Face Spaces** – Make the model publicly available for easy testing.  
 - **Expand Dataset** – Include additional features like interest rates, crime rates, and school quality.  
 
-##  **License**  
-This project is open-source under the **MIT License**.
-
 
 ##  **Links**    
 - **GitHub Repo**: [Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction)  
