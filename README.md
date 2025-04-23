@@ -2,110 +2,121 @@
 
 ![Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction/blob/main/banner_image.png)
 
- This project predicts real estate prices using **machine learning algorithms**, specifically **XGBoost, LightGBM, Random Forest, and Linear Regression**. The model is trained on a dataset of real estate transactions and evaluates feature importance using **SHAP values and Permutation Importance**.  
+This project predicts real estate prices using **machine learning algorithms**, specifically **XGBoost, LightGBM, Random Forest, and Linear Regression**. The model is trained on a dataset of real estate transactions and evaluates feature importance using **SHAP values and Permutation Importance**.
 
 This repository contains:  
 - A **Google Colab notebook** for running the project.  
 - A **public dataset** (`DATA2.csv`) stored in GitHub for easy access.  
-- A complete **machine learning pipeline** from data preprocessing to model evaluation.  
+- A complete **machine learning pipeline** from data preprocessing to model evaluation.
 
+---
 
-##  **Project Overview**  
- Real estate price prediction is an important task for buyers, sellers, and real estate agents. This project applies **multiple machine learning models** to analyze housing prices and provides insights into the most significant features influencing property values.
+## **Project Overview**
+
+Real estate price prediction is an important task for buyers, sellers, and real estate agents. This project applies **multiple machine learning models** to analyze housing prices and provides insights into the most significant features influencing property values.
 
 ### **Key Features**  
 - **Data Preprocessing**: Handling missing values, feature selection, and transformation.  
-- **Feature Engineering**: Normalization using Yeo-Johnson transformation to reduce skewness.  
+- **Feature Engineering**: **Target** normalization using Yeo–Johnson transformation to reduce skewness.  
 - **Model Training**: Comparing different regression models to find the best predictor.  
-- **Feature Importance**: Analyzing key factors affecting house prices using SHAP values.  
-- **Hyperparameter Tuning**: Optimizing model performance using GridSearchCV.  
+- **Feature Importance**: Analyzing key factors affecting house prices using SHAP values and Permutation Importance.  
+- **Hyperparameter Tuning**: Optimizing XGBoost and LightGBM performance using GridSearchCV.
 
 ### Real-World Applications
-- For Real Estate Agents:
-Set competitive listing prices based on property features.
-Identify undervalued properties for quick investment opportunities.
 
-- For Home Buyers & Sellers:
-Estimate the fair price of a home before buying/selling.
-Compare different properties based on features.
+- **For Real Estate Agents**  
+  - Set competitive listing prices based on property features.  
+  - Identify undervalued properties for quick investment opportunities.
 
-- For Investors & Financial Analysts:
-Predict housing market trends based on historical data.
-Optimize real estate portfolios by analyzing location-based pricing trends.
+- **For Home Buyers & Sellers**  
+  - Estimate the fair price of a home before buying/selling.  
+  - Compare different properties based on features.
+
+- **For Investors & Financial Analysts**  
+  - Predict housing market trends based on historical data.  
+  - Optimize real estate portfolios by analyzing location-based pricing trends.
 
 ### Future Improvements
-- Deploy as a Web App
-A Gradio-based UI (coming soon) will allow users to enter property details and get instant price predictions.
 
-- Improve Data & Features
-Integrate real-time real estate market data for more accurate predictions.
-Add economic indicators (interest rates, inflation, etc.).
+- **Deploy as a Web App**  
+  A Gradio-based UI (coming soon) will allow users to enter property details and get instant price predictions.
 
-- Enhance Model Performance
-Try deep learning models (e.g., LSTMs, CNNs) for advanced price forecasting.
-Tune hyperparameters further using Bayesian Optimization.
+- **Improve Data & Features**  
+  Integrate real-time market data and economic indicators (interest rates, inflation, etc.).
 
-##  Try It Now (No Installation Required)
-1. **Click Below to Open the Fully Functional Colab Notebook**  
- [Run in Google Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)  
+- **Enhance Model Performance**  
+  Try deep learning models (LSTMs, CNNs) for advanced price forecasting and Bayesian hyperparameter optimization.
+
+---
+
+## Try It Now (No Installation Required)
+
+1. **Open the Google Colab notebook**  
+   [Run in Google Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)
 
 2. **Dataset Automatically Loaded from GitHub**  
-No manual downloads required. The dataset is fetched automatically in the notebook.
+   No manual downloads required.
 
 3. **Just Run the Notebook!**  
-Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict in minutes.
+   Click **Runtime → Run all** and watch the pipeline run end-to-end.
 
-##  **Dataset Details**  
+---
+
+## **Dataset Details**  
 - **File Name:** `DATA2.csv`  
-- **Source:** [Melbourne Housing Market](https://www.kaggle.com/datasets/anthonypino/melbourne-housing-market)  
-- **Target Variable:** `Price` (House sale price)  
+- **Source:** [Melbourne Housing Market (Kaggle)](https://www.kaggle.com/datasets/anthonypino/melbourne-housing-market)  
+- **Target Variable:** `Price` (transformed via Yeo–Johnson)  
 - **Features Include:**  
   - `Distance`: Distance from city center  
   - `BuildingArea`: Size of the property  
   - `YearBuilt`: Year of construction  
   - `Landsize`: Land area in square meters  
   - `Property Type`: House, Apartment, or Unit  
-  - **And many more...**  
+  - …and more geographic and sale metadata.
 
+---
 
 ## **Technologies Used**  
-- **Python**   
-- **Google Colab**   
+- **Python**  
+- **Google Colab**  
 - **Pandas, NumPy, Matplotlib, Seaborn** (Data processing & visualization)  
-- **Scikit-Learn** (Machine Learning models)  
+- **Scikit-Learn** (Machine learning pipeline)  
 - **XGBoost & LightGBM** (Boosting algorithms)  
-- **SHAP & Permutation Importance** (Feature explanation)  
+- **SHAP & Permutation Importance** (Feature explainability)
 
+---
 
-##  Model Performance & Insights
+## Model Performance & Insights
 
-| Model               | Train R² | Test R² | MAE  | RMSE  | Best Use Case |
-|---------------------|---------|---------|------|-------|----------------------|
-| **Linear Regression** | 0.65  | 0.62  | 48,500 | 75,300 | Quick Baseline Model |
-| **Random Forest**    | 0.85  | 0.80  | 32,100 | 52,700 | High-dimensional data |
-| **XGBoost**         | 0.88  | 0.83  | 29,800 | 49,200 | **Best Overall Model** |
-| **LightGBM**        | 0.87  | 0.82  | 30,500 | 50,300 | Fast and scalable |
+| Model               | Train R² | Test R² | MAE   | RMSE  | Best Use Case               |
+|---------------------|---------:|--------:|------:|------:|-----------------------------|
+| **Linear Regression** | 0.780  | 0.771  | 0.360 | 0.472 | Quick baseline              |
+| **Random Forest**     | 0.964  | 0.841  | 0.290 | 0.394 | Handles nonlinearities well |
+| **XGBoost**           | 0.915  | 0.853  | 0.282 | 0.378 | Highly accurate             |
+| **LightGBM**          | 0.891  | 0.854  | 0.279 | 0.377 | **Best overall**            |
 
-- **XGBoost performed the best**, making it the ideal model for **real estate price predictions**.  
-- **Random Forest** works well but takes longer to train.  
-- **Linear Regression** is too simple and lacks accuracy for real-world applications.  
+**LightGBM** achieved the highest Test R² (0.854) and lowest RMSE (0.377), making it the top choice for deployment.
 
+---
 
-##  **Feature Importance Analysis**  
-**SHAP Values** were used to interpret feature importance. The top **5 most influential features** in predicting house prices were:  
-1️. **Property Type**  
-2️. **Region name**  
-3️. **Distance from city center**  
-4️. **Rooms**  
-5️. **Landsize**  
+## **Feature Importance Analysis**  
+SHAP and permutation importance revealed the top five drivers of house price:
 
-### **SHAP Summary Plot**  
+1. **Distance**  
+2. **Rooms**  
+3. **Property Type**  
+4. **Region name**  
+5. **Landsize**
+
+### SHAP Summary Plot
 
 ![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/40ba54a14ce1d04aa50992ace78cf48c1c061878/image.png)
 
+---
 
-##  **How to Reproduce This Project Locally**  
-1. **Clone this repository**:  
+## How to Reproduce This Project Locally
+
+1. **Clone this repository**  
    ```bash
    git clone https://github.com/svvd-m/real-estate-price-prediction.git
    ```
@@ -116,13 +127,13 @@ Click **"Runtime" → "Run all"** and see the model train, evaluate, and predict
 3. **Run the notebook locally** using Jupyter Notebook or Google Colab.
 
 ##  How This Project Demonstrates My Skills
-- **Data Science & Machine Learning**: Full ML pipeline including preprocessing, feature engineering, and model evaluation.  
-- **Model Optimization**: Hyperparameter tuning with GridSearchCV for best performance.  
-- **Business & Domain Knowledge**: Applied ML to real estate pricing, making data-driven decisions.  
-- **Python & Libraries**: Used Pandas, Scikit-Learn, XGBoost, LightGBM, and SHAP for feature analysis.  
+- **Data Science & Machine Learning**: Complete ML pipeline with preprocessing, feature engineering, and evaluation.  
+- **Model Optimization**: Hyperparameter tuning for XGBoost and LightGBM.  
+- **Business & Domain Knowledge**: Applied ML to real estate pricing for data-driven insights.  
+- **Python & Libraries**: Used Pandas, Scikit-Learn, XGBoost, LightGBM, and SHAP.  
 
 ##  Next Steps & Future Improvements
-- **Build a Web App** – Create an interactive Gradio UI for instant property price predictions.  
+- **Build a Web App** – Interactive Gradio UI for real-time predictions.  
 - **Deploy on Hugging Face Spaces** – Make the model publicly available for easy testing.  
 - **Expand Dataset** – Include additional features like interest rates, crime rates, and school quality.  
 
