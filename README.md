@@ -110,7 +110,7 @@ SHAP and permutation importance revealed the top five drivers of house price:
 
 ### SHAP Summary Plot
 
-![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/40ba54a14ce1d04aa50992ace78cf48c1c061878/image.png)
+![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/40ba54a14ce1d04aa50992ace78cf48c1c061878/img.png)
 
 ---
 
