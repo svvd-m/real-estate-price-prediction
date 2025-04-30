@@ -104,7 +104,7 @@ SHAP and permutation importance revealed the most influential features:
 
 ### SHAP Plot
 
-![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/4f6400b08ef7284055f65637571e111e7312b1b8/SHAP.png)
+![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/9f468b023d0333d6a9c8544a5aef93ab9e2c285e/SHAP.png)
 
 ---
 
