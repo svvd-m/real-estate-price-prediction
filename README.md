@@ -1,145 +1,159 @@
-# Real Estate Price Prediction using Machine Learning 
+# Real Estate Price Prediction using Machine Learning
 
 ![Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction/blob/main/banner_image.png)
 
-This project predicts real estate prices using **machine learning algorithms**, specifically **XGBoost, LightGBM, Random Forest, and Linear Regression**. The model is trained on a dataset of real estate transactions and evaluates feature importance using **SHAP values and Permutation Importance**.
-
-This repository contains:  
-- A **Google Colab notebook** for running the project.  
-- A **public dataset** (`DATA2.csv`) stored in GitHub for easy access.  
-- A complete **machine learning pipeline** from data preprocessing to model evaluation.
+This project predicts real estate prices using advanced machine learning algorithms such as **XGBoost**, **LightGBM**, **Random Forest**, and **Linear Regression**. The model is trained on real-world Melbourne housing data and includes **interpretability tools** (SHAP & Permutation Importance) and a **Gradio-powered web app** for real-time predictions.
 
 ---
 
-## **Project Overview**
+## Project Overview
 
-Real estate price prediction is an important task for buyers, sellers, and real estate agents. This project applies **multiple machine learning models** to analyze housing prices and provides insights into the most significant features influencing property values.
-
-### **Key Features**  
-- **Data Preprocessing**: Handling missing values, feature selection, and transformation.  
-- **Feature Engineering**: **Target** normalization using Yeo–Johnson transformation to reduce skewness.  
-- **Model Training**: Comparing different regression models to find the best predictor.  
-- **Feature Importance**: Analyzing key factors affecting house prices using SHAP values and Permutation Importance.  
-- **Hyperparameter Tuning**: Optimizing XGBoost and LightGBM performance using GridSearchCV.
-
-### Real-World Applications
-
-- **For Real Estate Agents**  
-  - Set competitive listing prices based on property features.  
-  - Identify undervalued properties for quick investment opportunities.
-
-- **For Home Buyers & Sellers**  
-  - Estimate the fair price of a home before buying/selling.  
-  - Compare different properties based on features.
-
-- **For Investors & Financial Analysts**  
-  - Predict housing market trends based on historical data.  
-  - Optimize real estate portfolios by analyzing location-based pricing trends.
-
-### Future Improvements
-
-- **Deploy as a Web App**  
-  A Gradio-based UI (coming soon) will allow users to enter property details and get instant price predictions.
-
-- **Improve Data & Features**  
-  Integrate real-time market data and economic indicators (interest rates, inflation, etc.).
-
-- **Enhance Model Performance**  
-  Try deep learning models (LSTMs, CNNs) for advanced price forecasting and Bayesian hyperparameter optimization.
+This end-to-end project builds a pipeline for:
+- Cleaning and transforming real estate transaction data
+- Engineering features including **Yeo–Johnson normalization** of target values
+- Comparing and tuning machine learning models
+- Explaining predictions using SHAP values
+- Deploying a safe and functional Gradio web app
 
 ---
 
-## Try It Now (No Installation Required)
+## Key Features
 
-1. **Open the Google Colab notebook**  
-   [Run in Google Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)
-
-2. **Dataset Automatically Loaded from GitHub**  
-   No manual downloads required.
-
-3. **Just Run the Notebook!**  
-   Click **Runtime → Run all** and watch the pipeline run end-to-end.
+- **Data Preprocessing**: Handle missing values, drop irrelevant columns, remove outliers  
+- **Feature Transformation**: Normalize `Price` using Yeo–Johnson method  
+- **Model Training**: Linear Regression, Random Forest, XGBoost, LightGBM  
+- **Hyperparameter Tuning**: Optimize boosting models with GridSearchCV  
+- **Feature Importance**: Visualized with SHAP & permutation importance  
+- **Web Deployment**: Clean, validated Gradio UI for end users
 
 ---
 
-## **Dataset Details**  
-- **File Name:** `DATA2.csv`  
-- **Source:** [Melbourne Housing Market (Kaggle)](https://www.kaggle.com/datasets/anthonypino/melbourne-housing-market)  
-- **Target Variable:** `Price` (transformed via Yeo–Johnson)  
-- **Features Include:**  
-  - `Distance`: Distance from city center  
-  - `BuildingArea`: Size of the property  
-  - `YearBuilt`: Year of construction  
-  - `Landsize`: Land area in square meters  
-  - `Property Type`: House, Apartment, or Unit  
-  - …and more geographic and sale metadata.
+## Real-World Applications
+
+- **Agents**: Recommend competitive listing prices  
+- **Buyers/Sellers**: Estimate fair value before transactions  
+- **Analysts**: Study location-based price trends and feature influence
 
 ---
 
-## **Technologies Used**  
+## Gradio Web App
+
+The deployed Gradio app allows users to input:
+- Number of rooms  
+- Distance from city center  
+- Land size  
+- Building area  
+- Property type  
+
+and receive a **real-time house price prediction**.
+
+### Input Safety Features
+- No blank/negative values allowed  
+- Caps extreme inputs to avoid skew  
+- Friendly error messages for invalid cases
+
+**Run it directly via Colab:**  
+[Launch Gradio App in Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)
+
+---
+
+## Dataset Details
+
+- **Filename**: `DATA2.csv`  
+- **Source**: [Melbourne Housing Market (Kaggle)](https://www.kaggle.com/datasets/anthonypino/melbourne-housing-market)  
+- **Target**: `Price` (transformed via Yeo–Johnson)  
+- **Notable Features**:  
+  - `Distance`, `Rooms`, `Landsize`, `BuildingArea`, `Regionname`, `Property Type`
+
+---
+
+## Technologies Used
+
 - **Python**  
-- **Google Colab**  
-- **Pandas, NumPy, Matplotlib, Seaborn** (Data processing & visualization)  
-- **Scikit-Learn** (Machine learning pipeline)  
-- **XGBoost & LightGBM** (Boosting algorithms)  
-- **SHAP & Permutation Importance** (Feature explainability)
+- **Google Colab / Jupyter Notebook**  
+- **Pandas, NumPy, Matplotlib, Seaborn**  
+- **Scikit-Learn**  
+- **XGBoost & LightGBM**  
+- **SHAP, Permutation Importance**  
+- **Gradio** (Web Interface)
 
 ---
 
-## Model Performance & Insights
+## Model Performance
 
-| Model               | Train R² | Test R² | MAE   | RMSE  | Best Use Case               |
-|---------------------|---------:|--------:|------:|------:|-----------------------------|
-| **Linear Regression** | 0.780  | 0.771  | 0.360 | 0.472 | Quick baseline              |
-| **Random Forest**     | 0.964  | 0.841  | 0.290 | 0.394 | Handles nonlinearities well |
-| **XGBoost**           | 0.915  | 0.853  | 0.282 | 0.378 | Highly accurate             |
-| **LightGBM**          | 0.891  | 0.854  | 0.279 | 0.377 | **Best overall**            |
-
-**LightGBM** achieved the highest Test R² (0.854) and lowest RMSE (0.377), making it the top choice for deployment.
+| Model             | Train R² | Test R² | MAE   | RMSE  | Notes                      |
+|------------------|---------:|--------:|------:|------:|----------------------------|
+| Linear Regression| 0.776    | 0.775   | 0.365 | 0.474 | Baseline                   |
+| Random Forest    | 0.964    | 0.843   | 0.291 | 0.396 | Good, nonlinear            |
+| XGBoost          | 0.913    | 0.856   | 0.283 | 0.380 | Accurate and efficient     |
+| LightGBM         | 0.887    | 0.862   | 0.278 | 0.372 | Top performer pre-tuning   |
+| Tuned XGBoost    | —        | 0.862   | 0.274 |   —   | Optimized via GridSearchCV |
+| Tuned LightGBM   | —        | 0.866   | 0.274 |   —   | **Best overall**           |
 
 ---
 
-## **Feature Importance Analysis**  
-SHAP and permutation importance revealed the top five drivers of house price:
+## Feature Importance
 
-1. **Distance**  
-2. **Rooms**  
-3. **Property Type**  
+SHAP and permutation importance revealed the most influential features:
+
+1. **Distance from city center**  
+2. **Number of rooms**  
+3. **Property type**  
 4. **Region name**  
 5. **Landsize**
 
-### SHAP Summary Plot
+### SHAP Plot
 
-![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/4f6400b08ef7284055f65637571e111e7312b1b8/img.png)
+![SHAP](https://github.com/svvd-m/real-estate-price-prediction/blob/4f6400b08ef7284055f65637571e111e7312b1b8/SHAP.png)
 
 ---
 
-## How to Reproduce This Project Locally
+## Testing & Validation Summary
 
-1. **Clone this repository**  
+| Test Case | Status |
+|-----------|--------|
+| Blank input | ✅ Rejected |
+| Negative/zero input | ✅ Rejected |
+| Large values | ✅ Clipped and handled |
+| Real-world mid-range input | ✅ Accurate prediction |
+| Extreme edge cases | ✅ Stable and bounded output |
+
+---
+
+## How to Reproduce
+
+1. **Clone the repository**
    ```bash
    git clone https://github.com/svvd-m/real-estate-price-prediction.git
    ```
-2. **Install dependencies**:  
+
+2. **Install requirements**
    ```bash
    pip install -r requirements.txt
    ```
-3. **Run the notebook locally** using Jupyter Notebook or Google Colab.
 
-##  How This Project Demonstrates My Skills
-- **Data Science & Machine Learning**: Complete ML pipeline with preprocessing, feature engineering, and evaluation.  
-- **Model Optimization**: Hyperparameter tuning for XGBoost and LightGBM.  
-- **Business & Domain Knowledge**: Applied ML to real estate pricing for data-driven insights.  
-- **Python & Libraries**: Used Pandas, Scikit-Learn, XGBoost, LightGBM, and SHAP.  
+3. **Run the notebook or launch the Gradio app from Google Colab**
 
-##  Next Steps & Future Improvements
-- **Build a Web App** – Interactive Gradio UI for real-time predictions.  
-- **Deploy on Hugging Face Spaces** – Make the model publicly available for easy testing.  
-- **Expand Dataset** – Include additional features like interest rates, crime rates, and school quality.  
+## Skills Demonstrated
+
+- ML pipeline construction
+- Feature selection and transformation
+- Model evaluation and tuning
+- Interpretability with SHAP
+- UI development with Gradio
+- Input validation and safe deployment
+
+## Next Steps
+
+- Deploy on Hugging Face Spaces
+- Add economic indicators (e.g., interest rates)
+- Include interactive location visualizations
+- Use real-time APIs for updated housing data
 
 
-##  **Links**    
-- **GitHub Repo**: [Real Estate Price Prediction](https://github.com/svvd-m/real-estate-price-prediction)  
-- **Colab Notebook**: [Run in Colab](https://colab.research.google.com/drive/1tjUv2aYLBIJAG39ViEM_vrSZnFT3De10?usp=sharing)  
-  
+
+
+
+
+
 
