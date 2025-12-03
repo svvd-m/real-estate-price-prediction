@@ -135,3 +135,20 @@ The most important features based on SHAP and permutation importance were:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/svvd-m/real-estate-price-prediction.git
+   ```
+
+2. **Install requirements**
+```bash
+pip install -r requirements.txt
+ ```
+
+3. **Run the notebook or open the Gradio app**
+
+- **Skills Demonstrated**
+- **end-to-end ML pipeline**
+- **data cleaning and feature engineering**
+- **model comparison and evaluation**
+- **hyperparameter tuning**
+- **SHAP explainability**
+- **building a small UI with Gradio**
+- **safe input validation**
